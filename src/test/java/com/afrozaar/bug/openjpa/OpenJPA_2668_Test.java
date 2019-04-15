@@ -6,37 +6,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import org.assertj.core.util.Arrays;
 import org.assertj.core.util.Lists;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.List;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class OpenjpaSpringDataJpaApplicationTests {
+public class OpenJPA_2668_Test {
 
     @Autowired
     private MemberRepository repository;
 
     @Test
-    public void Members() {
+    public void OpenJpa2668() {
         repository.save(new Member(2L, "Michael"));
         repository.save(new Member(3L, "James"));
 
         assertThat(repository.findByNameIn(Lists.newArrayList("Michael", "James"))).hasSize(2);
-        assertThat(repository.findByNameIn(Lists.newArrayList("Michael"))).hasSize(1);
-    }
 
-    @Test
-    public void MemberByName() {
-        Member save = repository.save(new Member(1L, "John"));
-        assertThat(repository.findAll()).isNotEmpty();
-
-        List<Member> findByName = repository.findByName("John");
-
-        assertThat(findByName).containsOnly(save);
+        assertThat(repository.findByNameIn(Lists.newArrayList("Michael"))).hasSize(1); // fails as the parameter from before is "cached"
     }
 
 }
