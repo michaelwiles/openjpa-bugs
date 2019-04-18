@@ -11,4 +11,5 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
     Collection<Member> findByNameIn(Collection<String> list);
 
+    Collection<Member> findByNameAndPlace(String name, String place);
 }

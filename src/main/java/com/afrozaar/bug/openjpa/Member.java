@@ -11,6 +11,8 @@ public class Member {
     private Long id;
 
     private String name;
+    private String place;
+    private int age;
 
     Member() {
     }
@@ -51,5 +53,21 @@ public class Member {
         } else if (!id.equals(other.id))
             return false;
         return true;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
     }
 }

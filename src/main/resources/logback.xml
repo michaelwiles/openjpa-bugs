@@ -1,0 +1,27 @@
+<configuration debug="true">
+    <jmxConfigurator />
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>Web Deploy %d %-5level [%thread] %logger{50}.%method\(\) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- <logger name="org.thymeleaf.standard.expression.VariableExpression" level="TRACE"/> -->
+    <logger name="org.springframework.session.data.redis" level="DEBUG" />
+    <logger name="com.afrozaar.ashes.core.security.spring.UserAuthenticationProvider" level="WARN" />
+    <logger name="com.afrozaar" level="DEBUG" />
+    <!-- <logger name="org.springframework.messaging" level="DEBUG"/> -->
+    <!-- <logger name="org.springframework.beans" level="DEBUG" /> -->
+    <logger name="openjpa.jdbc.SQL" level="TRACE" />
+
+    <!-- <logger name="com.afrozaar.util.module.ModuleLoader" level="TRACE"/> -->
+    <!-- <logger name="com.afrozaar.ashes.core.model.modules" level="TRACE"/> <logger name="com.afrozaar.ashes.core.tasks.SimpleTaskManager" 
+        level="INFO"/> <logger name="com.afrozaar.util.queues.TaskVisibilityMonitor" level="INFO"/> <logger name="com.afrozaar.ashes.core.tasks" 
+        level="INFO"/> -->
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+</configuration>

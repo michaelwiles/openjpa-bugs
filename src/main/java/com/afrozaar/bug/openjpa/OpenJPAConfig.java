@@ -23,6 +23,7 @@ public class OpenJPAConfig extends JpaBaseConfiguration {
         super(dataSource, properties, jtaTransactionManager, transactionManagerCustomizers);
         properties.setShowSql(true);
         properties.setGenerateDdl(true);
+        properties.getProperties().put("openjpa.Log", "slf4j");
     }
 
     @Override
@@ -33,6 +34,10 @@ public class OpenJPAConfig extends JpaBaseConfiguration {
 
     @Override
     protected Map<String, Object> getVendorProperties() {
-        return new HashMap<>(0);
+
+        HashMap<String, Object> hashMap = new HashMap<>(1);
+        hashMap.put("openjpa.Log", "slf4j");
+        hashMap.put("openjpa.ConnectionFactoryProperties", "PrintParameters=true");
+        return hashMap;
     }
 }
